@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 
 
 func _on_pressed() -> void:
-	print("OK")
+	get_tree().change_scene_to_file("res://ping_pong.tscn")

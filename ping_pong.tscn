@@ -33,7 +33,7 @@ size = Vector2(148.343, 18.4734)
 size = Vector2(147.283, 12.9138)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4mbhn"]
-size = Vector2(24, 1280)
+size = Vector2(24, 1504)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_y4i01"]
 
@@ -70,7 +70,6 @@ script = ExtResource("3_4mbhn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 position = Vector2(-0.689758, -4.6875)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_xpy1r")
 
 [node name="Sprite2D" type="Sprite2D" parent="player"]
@@ -87,7 +86,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 24.0
-offset_top = -168.0
+offset_top = -404.0
 offset_right = -24.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -122,21 +121,21 @@ shape = SubResource("RectangleShape2D_ubp5t")
 collision_layer = 4
 
 [node name="ParedIzquierda" type="CollisionShape2D" parent="Walls"]
-position = Vector2(12, 640)
+position = Vector2(12, 752)
 shape = SubResource("RectangleShape2D_4mbhn")
 
 [node name="Sprite2D" type="Sprite2D" parent="Walls/ParedIzquierda"]
-position = Vector2(4.76837e-07, 3.05176e-05)
-scale = Vector2(24, 1280)
+position = Vector2(4.76837e-07, 48)
+scale = Vector2(24, 1600)
 texture = SubResource("CanvasTexture_y4i01")
 
 [node name="ParedDerecha" type="CollisionShape2D" parent="Walls"]
-position = Vector2(708, 640)
+position = Vector2(708, 752)
 shape = SubResource("RectangleShape2D_4mbhn")
 
 [node name="Sprite2D" type="Sprite2D" parent="Walls/ParedDerecha"]
-position = Vector2(4.76837e-07, 3.05176e-05)
-scale = Vector2(24, 1280)
+position = Vector2(4.76837e-07, 48)
+scale = Vector2(24, 1600)
 texture = SubResource("CanvasTexture_y4i01")
 
 [connection signal="body_entered" from="Pelota" to="Pelota" method="_on_body_entered"]

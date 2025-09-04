@@ -26,7 +26,6 @@ script = ExtResource("1_ysyk0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_topo"]
 position = Vector2(-0.689758, -4.6875)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_4x57a")
 
 [node name="Sprite2D" type="Sprite2D" parent="player_topo"]
