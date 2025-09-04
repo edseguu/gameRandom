@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://bl2wjpqrr70gk"]
+
+[ext_resource type="Texture2D" uid="uid://lxxna1edoc71" path="res://assets/ping_pong/ball.png" id="1_afl4s"]
+[ext_resource type="Script" uid="uid://cpo50dd6amn18" path="res://player.gd" id="3_4mbhn"]
+[ext_resource type="Script" uid="uid://ufpxrnf6i863" path="res://panel_container.gd" id="3_y4i01"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yyq7h"]
+radius = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afl4s"]
+size = Vector2(255.208, 86.25)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_8jiyw"]
+
+[node name="PingPong" type="Node2D"]
+
+[node name="Pelota" type="RigidBody2D" parent="."]
+position = Vector2(368, 536)
+
+[node name="Sprite2D" type="Sprite2D" parent="Pelota"]
+position = Vector2(29, 41)
+texture = ExtResource("1_afl4s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pelota"]
+position = Vector2(29, 41)
+shape = SubResource("CircleShape2D_yyq7h")
+
+[node name="player" type="CharacterBody2D" parent="."]
+position = Vector2(372, 976)
+scale = Vector2(0.724898, 0.4)
+script = ExtResource("3_4mbhn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+shape = SubResource("RectangleShape2D_afl4s")
+
+[node name="Sprite2D" type="Sprite2D" parent="player"]
+position = Vector2(0, 3.05176e-05)
+scale = Vector2(251.07, 80.0004)
+texture = SubResource("CanvasTexture_8jiyw")
+
+[node name="player2" type="CharacterBody2D" parent="."]
+position = Vector2(144, 448)
+scale = Vector2(0.525477, 0.16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player2"]
+position = Vector2(284.178, 306.875)
+shape = SubResource("RectangleShape2D_afl4s")
+
+[node name="Sprite2D" type="Sprite2D" parent="player2"]
+position = Vector2(284.178, 305)
+scale = Vector2(251.07, 80.0004)
+texture = SubResource("CanvasTexture_8jiyw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -136.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("3_y4i01")
+
+[connection signal="body_entered" from="Pelota" to="Pelota" method="_on_body_entered"]

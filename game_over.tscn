@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://cetjlqbv361cw"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xapjj"]
+
+[node name="GameOver" type="Node"]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 170.0
+offset_bottom = 380.0
+grow_horizontal = 2
+text = "GAME OVER"
+
+[node name="Control_buttons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Control_buttons"]
+scale = Vector2(720, 132)
+texture_normal = SubResource("CanvasTexture_xapjj")

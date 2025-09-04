@@ -1,0 +1,101 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3nmf1ybt6w2y"]
+
+[ext_resource type="Script" uid="uid://cdwb52cw3u2g6" path="res://touch_screen_button.gd" id="2_1n0d2"]
+[ext_resource type="Texture2D" uid="uid://cad4yr6nx5rbj" path="res://assets/start/button_play.png" id="2_qn1rc"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_qn1rc"]
+specular_color = Color(0.66851, 0.628042, 0.934779, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ots34"]
+specular_color = Color(0.467965, 0.435137, 0.325702, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n0d2"]
+atlas = ExtResource("2_qn1rc")
+region = Rect2(0, 0, 359, 252)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5hus"]
+atlas = ExtResource("2_qn1rc")
+region = Rect2(359, 0, 359, 252)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oiuna"]
+atlas = ExtResource("2_qn1rc")
+region = Rect2(718, 0, 359, 252)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a3qj"]
+atlas = ExtResource("2_qn1rc")
+region = Rect2(1077, 0, 359, 252)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4a3qj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1n0d2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5hus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oiuna")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4a3qj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Start" type="Node"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+
+[node name="back" type="Sprite2D" parent="Control"]
+modulate = Color(0.164166, 0.260944, 0.269128, 1)
+position = Vector2(359.75, 639.25)
+scale = Vector2(720.5, 1279.5)
+texture = SubResource("CanvasTexture_qn1rc")
+
+[node name="Control_button_play" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 448.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="ButtonPlay" type="TouchScreenButton" parent="Control_button_play"]
+position = Vector2(131, 516)
+scale = Vector2(476, 189)
+texture_normal = SubResource("CanvasTexture_ots34")
+script = ExtResource("2_1n0d2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control_button_play"]
+position = Vector2(348.25, 573)
+scale = Vector2(1.78134, 1.41667)
+sprite_frames = SubResource("SpriteFrames_4a3qj")
+autoplay = "default"
+frame_progress = 0.383014
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -172.5
+offset_right = 172.5
+offset_bottom = 55.0
+grow_horizontal = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "TEXT GAME NAME"
+
+[connection signal="pressed" from="Control_button_play/ButtonPlay" to="Control_button_play/ButtonPlay" method="_on_pressed"]
