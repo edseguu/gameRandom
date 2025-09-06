@@ -9,6 +9,4 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var screen_size = DisplayServer.screen_get_size(DisplayServer.window_get_current_screen())
-	if $Pelota.position.y > screen_size.y or $Pelota.position.y < -screen_size.y:
-		get_tree().paused = true
 	
