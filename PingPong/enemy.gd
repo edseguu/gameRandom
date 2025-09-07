@@ -2,7 +2,7 @@
 extends CharacterBody2D
 
 var contador_enemy = 0
-var velocidad_movimiento = 820.0 
+var velocidad_movimiento = 900.0 
 
 @onready var pelota = $"../Pelota"
 

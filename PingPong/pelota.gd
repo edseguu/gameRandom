@@ -1,6 +1,8 @@
 extends RigidBody2D
-const FUERZA_IMPULSO_JUGADOR = 1900.0
-
+const FUERZA_IMPULSO_JUGADOR = 2200.0
+@onready var spriteParedDerecha = $"../RigidParedDerecha/ParedDerecha/Sprite2D"
+var textura_normal = preload("res://assets/ping_pong/wall.png")
+var textura_estado = preload("res://assets/ping_pong/wallState.png")
 
 func _ready() -> void:
 	# Le damos un impulso inicial aleatorio para que empiece a moverse.
@@ -14,13 +16,14 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
+
 	if body.name == "player":
 		var direccion_rebote = (self.global_position - body.global_position).normalized()
 		
 		# --- LA PARTE MÁS IMPORTANTE ---
 		# Forzamos que la pelota SIEMPRE vaya hacia arriba para cumplir tu objetivo.
 		# Si el vector 'y' es positivo (apunta hacia abajo en Godot), lo hacemos negativo.
-		if direccion_rebote.y > -0.5: # Usamos -0.2 para evitar rebotes muy horizontales
+		if direccion_rebote.y > -0.2: # Usamos -0.2 para evitar rebotes muy horizontales
 			direccion_rebote.y = -abs(direccion_rebote.y)
 			if direccion_rebote.y > -1: # Si es casi horizontal, dale más fuerza vertical
 				direccion_rebote.y = -15
@@ -46,3 +49,16 @@ func _on_body_entered(body: Node) -> void:
 		# la velocidad que tenía la pelota, asegurando un impulso consistente.
 		self.linear_velocity = direccion_rebote.normalized() * FUERZA_IMPULSO_JUGADOR
 		print("¡Impulso aplicado por el enemigo!")
+
+
+
+
+
+
+func _on_area_2d_pared_derecha_body_entered(body: Node2D) -> void:
+	spriteParedDerecha.texture = textura_estado
+		
+
+
+func _on_area_2d_pared_derecha_body_exited(body: Node2D) -> void:
+	spriteParedDerecha.texture = textura_normal
