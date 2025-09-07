@@ -39,7 +39,7 @@ func _on_body_entered(body: Node) -> void:
 		# --- LA PARTE MÁS IMPORTANTE ---
 		# Forzamos que la pelota SIEMPRE vaya hacia arriba para cumplir tu objetivo.
 		# Si el vector 'y' es positivo (apunta hacia abajo en Godot), lo hacemos negativo.
-		if direccion_rebote.y < 0.6: # Usamos -0.2 para evitar rebotes muy horizontales
+		if direccion_rebote.y < -10: # Usamos -0.2 para evitar rebotes muy horizontales
 			direccion_rebote.y = abs(direccion_rebote.y)
 			if direccion_rebote.y < 0.3: # Si es casi horizontal, dale más fuerza vertical
 				direccion_rebote.y = 0.5
@@ -56,9 +56,8 @@ func _on_body_entered(body: Node) -> void:
 
 
 func _on_area_2d_pared_derecha_body_entered(body: Node2D) -> void:
-	spriteParedDerecha.texture = textura_estado
-		
-
+	if name:
+		spriteParedDerecha.texture = textura_estado
 
 func _on_area_2d_pared_derecha_body_exited(body: Node2D) -> void:
 	spriteParedDerecha.texture = textura_normal
