@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cetjlqbv361cw"]
+[gd_scene load_steps=3 format=3 uid="uid://cetjlqbv361cw"]
 
-[ext_resource type="Texture2D" uid="uid://bd5ekn27q3nes" path="res://assets/ping_pong/ball.png" id="1_y26ei"]
+[ext_resource type="Texture2D" uid="uid://bghm821w4ty5k" path="res://assets/game_over/button.png" id="1_y26ei"]
+[ext_resource type="Script" uid="uid://c4oyfu2d2287g" path="res://button.gd" id="2_yxx3c"]
 
 [node name="GameOver" type="Node"]
 
@@ -12,20 +13,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -158.0
+offset_top = -40.0
+offset_right = 158.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="Label" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 63
 text = "GAME OVER"
 
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="CanvasLayer/PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer/PanelContainer/VBoxContainer/Control"]
+position = Vector2(-181, -3.5)
 texture_normal = ExtResource("1_y26ei")
+script = ExtResource("2_yxx3c")
+
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/Control/TouchScreenButton" to="CanvasLayer/PanelContainer/VBoxContainer/Control/TouchScreenButton" method="_on_pressed"]

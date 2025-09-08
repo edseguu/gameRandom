@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bl2wjpqrr70gk"]
+[gd_scene load_steps=27 format=3 uid="uid://bl2wjpqrr70gk"]
 
 [ext_resource type="Texture2D" uid="uid://bd5ekn27q3nes" path="res://assets/ping_pong/ball.png" id="1_afl4s"]
 [ext_resource type="Script" uid="uid://bldceok7oxggw" path="res://PingPong/pelota.gd" id="1_k4svs"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dae5pb6r51712" path="res://PingPong/area_enemy.gd" id="8_1b3ln"]
 [ext_resource type="Texture2D" uid="uid://smjwmrcbep7f" path="res://assets/ping_pong/wall.png" id="8_70da3"]
 [ext_resource type="Texture2D" uid="uid://bw23p35oq0g0k" path="res://assets/ping_pong/enemy.png" id="9_qjqrq"]
+[ext_resource type="Script" uid="uid://didjvcvbfc22v" path="res://area_player.gd" id="11_exua4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k4svs"]
 friction = 0.0
@@ -40,6 +41,9 @@ size = Vector2(147.283, 52.7633)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1b3ln"]
 size = Vector2(29.6835, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e6ehm"]
+size = Vector2(724, 224)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j747b"]
 size = Vector2(67, 1601)
@@ -158,6 +162,17 @@ texture = SubResource("CanvasTexture_qjqrq")
 position = Vector2(4.76837e-07, -1.10251e-06)
 shape = SubResource("RectangleShape2D_1b3ln")
 
+[node name="AreaPlayer" type="Area2D" parent="."]
+position = Vector2(72, 1501)
+collision_mask = 2
+script = ExtResource("11_exua4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaPlayer"]
+position = Vector2(289, -26)
+shape = SubResource("RectangleShape2D_e6ehm")
+
+[node name="Sprite2D" type="Sprite2D" parent="AreaPlayer"]
+
 [node name="RigidParedIzquierda" type="StaticBody2D" parent="."]
 position = Vector2(10, 1)
 collision_layer = 8
@@ -198,6 +213,7 @@ shape = SubResource("RectangleShape2D_70da3")
 [connection signal="body_entered" from="Pelota/PelotaArea2D" to="Pelota/PelotaArea2D" method="_on_body_entered"]
 [connection signal="ready" from="player" to="player" method="_on_ready"]
 [connection signal="body_entered" from="AreaEnemy" to="AreaEnemy" method="_on_body_entered"]
+[connection signal="body_entered" from="AreaPlayer" to="AreaPlayer" method="_on_body_entered"]
 [connection signal="body_entered" from="RigidParedIzquierda/Area2DParedIzquierda" to="Pelota" method="_on_area_2d_pared_izquierda_body_entered"]
 [connection signal="body_exited" from="RigidParedIzquierda/Area2DParedIzquierda" to="Pelota" method="_on_area_2d_pared_izquierda_body_exited"]
 [connection signal="body_entered" from="RigidParedDerecha/Area2DParedDerecha" to="Pelota" method="_on_area_2d_pared_derecha_body_entered"]
