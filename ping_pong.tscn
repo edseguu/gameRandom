@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bl2wjpqrr70gk"]
+[gd_scene load_steps=24 format=3 uid="uid://bl2wjpqrr70gk"]
 
 [ext_resource type="Texture2D" uid="uid://bd5ekn27q3nes" path="res://assets/ping_pong/ball.png" id="1_afl4s"]
 [ext_resource type="Script" uid="uid://bldceok7oxggw" path="res://PingPong/pelota.gd" id="1_k4svs"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c4m51tnvs1re8" path="res://PingPong/PelotaArea2D.gd" id="1_y4i01"]
 [ext_resource type="Script" uid="uid://ba0bbna7n43rk" path="res://PingPong/player.gd" id="3_4mbhn"]
 [ext_resource type="Script" uid="uid://celr4qjbrv55d" path="res://PingPong/controll_ui_player.gd" id="5_k4svs"]
+[ext_resource type="Texture2D" uid="uid://cmys6jcpi15wp" path="res://assets/ping_pong/player.png" id="6_j747b"]
 [ext_resource type="Script" uid="uid://bd2oab7e2whb3" path="res://PingPong/enemy.gd" id="6_ubp5t"]
 [ext_resource type="Script" uid="uid://dae5pb6r51712" path="res://PingPong/area_enemy.gd" id="8_1b3ln"]
 [ext_resource type="Texture2D" uid="uid://smjwmrcbep7f" path="res://assets/ping_pong/wall.png" id="8_70da3"]
@@ -22,16 +23,16 @@ height = 48.0
 radius = 24.0832
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1b3ln"]
-radius = 42.5
-height = 248.311
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_8jiyw"]
+radius = 57.5
+height = 281.419
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_4mbhn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_70da3"]
 radius = 24.2989
 height = 154.7
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_8jiyw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubp5t"]
 size = Vector2(147.283, 52.7633)
@@ -45,14 +46,20 @@ size = Vector2(73.5, 1602.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1b3ln"]
 size = Vector2(29.6835, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j747b"]
+size = Vector2(67, 1601)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjqrq"]
+size = Vector2(70, 1606)
+
 [node name="PingPong" type="Node2D"]
 script = ExtResource("1_xpy1r")
 metadata/_edit_horizontal_guides_ = [1596.0]
 
 [node name="Pelota" type="RigidBody2D" parent="."]
-position = Vector2(431, 407)
+position = Vector2(360, 492)
 collision_layer = 2
-collision_mask = 5
+collision_mask = 13
 mass = 0.001
 physics_material_override = SubResource("PhysicsMaterial_k4svs")
 continuous_cd = 1
@@ -74,20 +81,20 @@ script = ExtResource("1_y4i01")
 shape = SubResource("CircleShape2D_yyq7h")
 
 [node name="player" type="CharacterBody2D" parent="."]
-position = Vector2(360, 1255)
+position = Vector2(360, 1285)
 scale = Vector2(0.724898, 0.4)
-collision_mask = 4
+collision_mask = 12
 script = ExtResource("3_4mbhn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
-position = Vector2(3.09944e-05, -3.0756e-05)
+position = Vector2(1.37949, -3.0756e-05)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_1b3ln")
 
 [node name="Sprite2D" type="Sprite2D" parent="player"]
-position = Vector2(-3.05176e-05, 3.05176e-05)
-scale = Vector2(245.552, 80.0004)
-texture = SubResource("CanvasTexture_8jiyw")
+position = Vector2(1.37951, -0.000141144)
+scale = Vector2(0.552919, 0.799317)
+texture = ExtResource("6_j747b")
 
 [node name="Controll_player" type="CanvasLayer" parent="player"]
 
@@ -97,18 +104,19 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 49.0
-offset_top = -669.0
-offset_right = -70.0
+offset_left = 85.0
+offset_top = -668.0
+offset_right = -34.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = SubResource("CanvasTexture_4mbhn")
 script = ExtResource("5_k4svs")
 
 [node name="Enemy" type="CharacterBody2D" parent="."]
-position = Vector2(360, 382)
+position = Vector2(361, 247)
 scale = Vector2(0.943761, 0.720197)
-collision_mask = 5
+collision_mask = 13
 script = ExtResource("6_ubp5t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
@@ -131,19 +139,6 @@ collision_mask = 0
 position = Vector2(0.529816, 3.05176e-05)
 scale = Vector2(0.999999, 1)
 shape = SubResource("RectangleShape2D_ubp5t")
-
-[node name="RigidParedIzquierda" type="StaticBody2D" parent="."]
-position = Vector2(29, 796)
-rotation = -3.14159
-collision_layer = 4
-
-[node name="ParedIzquierda" type="CollisionShape2D" parent="RigidParedIzquierda"]
-position = Vector2(-3, 1.33276e-05)
-shape = SubResource("RectangleShape2D_4mbhn")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidParedIzquierda/ParedIzquierda"]
-rotation = -1.57079
-texture = ExtResource("8_70da3")
 
 [node name="RigidParedDerecha" type="StaticBody2D" parent="."]
 position = Vector2(687, 794)
@@ -175,6 +170,24 @@ shape = SubResource("RectangleShape2D_1b3ln")
 self_modulate = Color(0.12053, 0.328386, 0.227096, 0.760784)
 scale = Vector2(-0.0461726, 0.174439)
 
+[node name="RigidParedIzquierda" type="StaticBody2D" parent="."]
+position = Vector2(10, 1)
+collision_layer = 8
+
+[node name="ParedIzquierda" type="CollisionShape2D" parent="RigidParedIzquierda"]
+position = Vector2(23.5, 790.5)
+shape = SubResource("RectangleShape2D_j747b")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidParedIzquierda/ParedIzquierda"]
+rotation = 1.57079
+texture = ExtResource("8_70da3")
+
+[node name="Area2DParedIzquierda" type="Area2D" parent="RigidParedIzquierda"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidParedIzquierda/Area2DParedIzquierda"]
+position = Vector2(25, 793)
+shape = SubResource("RectangleShape2D_qjqrq")
+
 [connection signal="body_entered" from="Pelota" to="Pelota" method="_on_body_entered"]
 [connection signal="body_entered" from="Pelota" to="Enemy" method="_on_pelota_body_entered"]
 [connection signal="body_entered" from="Pelota" to="RigidParedDerecha" method="_on_pelota_body_entered"]
@@ -183,3 +196,5 @@ scale = Vector2(-0.0461726, 0.174439)
 [connection signal="body_entered" from="RigidParedDerecha/Area2DParedDerecha" to="Pelota" method="_on_area_2d_pared_derecha_body_entered"]
 [connection signal="body_exited" from="RigidParedDerecha/Area2DParedDerecha" to="Pelota" method="_on_area_2d_pared_derecha_body_exited"]
 [connection signal="body_entered" from="AreaEnemy" to="AreaEnemy" method="_on_body_entered"]
+[connection signal="body_entered" from="RigidParedIzquierda/Area2DParedIzquierda" to="Pelota" method="_on_area_2d_pared_izquierda_body_entered"]
+[connection signal="body_exited" from="RigidParedIzquierda/Area2DParedIzquierda" to="Pelota" method="_on_area_2d_pared_izquierda_body_exited"]

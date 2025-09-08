@@ -1,6 +1,7 @@
 extends RigidBody2D
 const FUERZA_IMPULSO_JUGADOR = 2200.0
 @onready var spriteParedDerecha = $"../RigidParedDerecha/ParedDerecha/Sprite2D"
+@onready var spriteParedIzquierda = $"..//RigidParedIzquierda/ParedIzquierda/Sprite2D"
 var textura_normal = preload("res://assets/ping_pong/wall.png")
 var textura_estado = preload("res://assets/ping_pong/wallState.png")
 
@@ -61,3 +62,11 @@ func _on_area_2d_pared_derecha_body_entered(body: Node2D) -> void:
 
 func _on_area_2d_pared_derecha_body_exited(body: Node2D) -> void:
 	spriteParedDerecha.texture = textura_normal
+
+
+func _on_area_2d_pared_izquierda_body_entered(body: Node2D) -> void:
+	spriteParedIzquierda.texture = textura_estado
+
+
+func _on_area_2d_pared_izquierda_body_exited(body: Node2D) -> void:
+	spriteParedIzquierda.texture = textura_normal
