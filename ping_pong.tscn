@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bl2wjpqrr70gk"]
+[gd_scene load_steps=25 format=3 uid="uid://bl2wjpqrr70gk"]
 
 [ext_resource type="Texture2D" uid="uid://bd5ekn27q3nes" path="res://assets/ping_pong/ball.png" id="1_afl4s"]
 [ext_resource type="Script" uid="uid://bldceok7oxggw" path="res://PingPong/pelota.gd" id="1_k4svs"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bd2oab7e2whb3" path="res://PingPong/enemy.gd" id="6_ubp5t"]
 [ext_resource type="Script" uid="uid://dae5pb6r51712" path="res://PingPong/area_enemy.gd" id="8_1b3ln"]
 [ext_resource type="Texture2D" uid="uid://smjwmrcbep7f" path="res://assets/ping_pong/wall.png" id="8_70da3"]
+[ext_resource type="Texture2D" uid="uid://bw23p35oq0g0k" path="res://assets/ping_pong/enemy.png" id="9_qjqrq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k4svs"]
 friction = 0.0
@@ -32,16 +33,10 @@ height = 281.419
 radius = 24.2989
 height = 154.7
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_8jiyw"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubp5t"]
 size = Vector2(147.283, 52.7633)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mbhn"]
-size = Vector2(63, 1504)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_70da3"]
-size = Vector2(73.5, 1602.5)
+[sub_resource type="CanvasTexture" id="CanvasTexture_qjqrq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1b3ln"]
 size = Vector2(29.6835, 20)
@@ -51,6 +46,12 @@ size = Vector2(67, 1601)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjqrq"]
 size = Vector2(70, 1606)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mbhn"]
+size = Vector2(63, 1504)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70da3"]
+size = Vector2(73.5, 1602.5)
 
 [node name="PingPong" type="Node2D"]
 script = ExtResource("1_xpy1r")
@@ -126,9 +127,9 @@ scale = Vector2(0.999999, 1)
 shape = SubResource("CapsuleShape2D_70da3")
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
-position = Vector2(1.05957, 4.16553)
-scale = Vector2(148.343, 50.6363)
-texture = SubResource("CanvasTexture_8jiyw")
+position = Vector2(0.529798, 4.16552)
+scale = Vector2(0.30365, 0.340043)
+texture = ExtResource("9_qjqrq")
 
 [node name="Area2D" type="Area2D" parent="Enemy"]
 position = Vector2(0, 4.16553)
@@ -140,35 +141,22 @@ position = Vector2(0.529816, 3.05176e-05)
 scale = Vector2(0.999999, 1)
 shape = SubResource("RectangleShape2D_ubp5t")
 
-[node name="RigidParedDerecha" type="StaticBody2D" parent="."]
-position = Vector2(687, 794)
-collision_layer = 4
-
-[node name="ParedDerecha" type="CollisionShape2D" parent="RigidParedDerecha"]
-shape = SubResource("RectangleShape2D_4mbhn")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidParedDerecha/ParedDerecha"]
-rotation = -1.57079
-texture = ExtResource("8_70da3")
-
-[node name="Area2DParedDerecha" type="Area2D" parent="RigidParedDerecha"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidParedDerecha/Area2DParedDerecha"]
-shape = SubResource("RectangleShape2D_70da3")
-
 [node name="AreaEnemy" type="Area2D" parent="."]
 position = Vector2(360, 72)
 scale = Vector2(24.2559, 6.92)
 collision_mask = 2
 script = ExtResource("8_1b3ln")
 
+[node name="Sprite2D" type="Sprite2D" parent="AreaEnemy"]
+self_modulate = Color(0.156863, 0.160784, 0.137255, 0.305882)
+position = Vector2(0.0143245, -0.303999)
+rotation = 3.14159
+scale = Vector2(29.7121, -20.3432)
+texture = SubResource("CanvasTexture_qjqrq")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaEnemy"]
 position = Vector2(4.76837e-07, -1.10251e-06)
 shape = SubResource("RectangleShape2D_1b3ln")
-
-[node name="Sprite2D" type="Sprite2D" parent="AreaEnemy"]
-self_modulate = Color(0.12053, 0.328386, 0.227096, 0.760784)
-scale = Vector2(-0.0461726, 0.174439)
 
 [node name="RigidParedIzquierda" type="StaticBody2D" parent="."]
 position = Vector2(10, 1)
@@ -188,13 +176,29 @@ texture = ExtResource("8_70da3")
 position = Vector2(25, 793)
 shape = SubResource("RectangleShape2D_qjqrq")
 
+[node name="RigidParedDerecha" type="StaticBody2D" parent="."]
+position = Vector2(687, 794)
+collision_layer = 4
+
+[node name="ParedDerecha" type="CollisionShape2D" parent="RigidParedDerecha"]
+shape = SubResource("RectangleShape2D_4mbhn")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidParedDerecha/ParedDerecha"]
+rotation = -1.57079
+texture = ExtResource("8_70da3")
+
+[node name="Area2DParedDerecha" type="Area2D" parent="RigidParedDerecha"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidParedDerecha/Area2DParedDerecha"]
+shape = SubResource("RectangleShape2D_70da3")
+
 [connection signal="body_entered" from="Pelota" to="Pelota" method="_on_body_entered"]
 [connection signal="body_entered" from="Pelota" to="Enemy" method="_on_pelota_body_entered"]
 [connection signal="body_entered" from="Pelota" to="RigidParedDerecha" method="_on_pelota_body_entered"]
 [connection signal="body_entered" from="Pelota/PelotaArea2D" to="Pelota/PelotaArea2D" method="_on_body_entered"]
 [connection signal="ready" from="player" to="player" method="_on_ready"]
-[connection signal="body_entered" from="RigidParedDerecha/Area2DParedDerecha" to="Pelota" method="_on_area_2d_pared_derecha_body_entered"]
-[connection signal="body_exited" from="RigidParedDerecha/Area2DParedDerecha" to="Pelota" method="_on_area_2d_pared_derecha_body_exited"]
 [connection signal="body_entered" from="AreaEnemy" to="AreaEnemy" method="_on_body_entered"]
 [connection signal="body_entered" from="RigidParedIzquierda/Area2DParedIzquierda" to="Pelota" method="_on_area_2d_pared_izquierda_body_entered"]
 [connection signal="body_exited" from="RigidParedIzquierda/Area2DParedIzquierda" to="Pelota" method="_on_area_2d_pared_izquierda_body_exited"]
+[connection signal="body_entered" from="RigidParedDerecha/Area2DParedDerecha" to="Pelota" method="_on_area_2d_pared_derecha_body_entered"]
+[connection signal="body_exited" from="RigidParedDerecha/Area2DParedDerecha" to="Pelota" method="_on_area_2d_pared_derecha_body_exited"]
