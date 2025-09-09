@@ -1,15 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://lny5gr7nv85n"]
 
 [ext_resource type="Script" uid="uid://d0ydbhuabl48i" path="res://Topos/player.gd" id="1_ysyk0"]
+[ext_resource type="Texture2D" uid="uid://cyhxoyqib2538" path="res://assets/Topos/player.png" id="2_4x57a"]
 [ext_resource type="Script" uid="uid://td6gxsiimhqw" path="res://Topos/topo.gd" id="2_v0pkk"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyysw"]
-size = Vector2(323, 166)
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_v4e20"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysyk0"]
-size = Vector2(268, 150)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0pkk"]
 size = Vector2(176, 100)
@@ -19,26 +12,13 @@ size = Vector2(131.5, 62.5)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_k4cym"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyysw"]
+size = Vector2(113.844, 46.669)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysyk0"]
+size = Vector2(41.7192, 115.258)
+
 [node name="Node2D" type="Node2D"]
-
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(372, 763)
-script = ExtResource("1_ysyk0")
-
-[node name="Area2D" type="Area2D" parent="Player"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
-position = Vector2(-44.5, 72)
-shape = SubResource("RectangleShape2D_wyysw")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(-48, 71.75)
-scale = Vector2(300, 144.5)
-texture = SubResource("CanvasTexture_v4e20")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-46, 73)
-shape = SubResource("RectangleShape2D_ysyk0")
 
 [node name="Topo" type="RigidBody2D" parent="."]
 position = Vector2(372, 356)
@@ -55,9 +35,31 @@ shape = SubResource("RectangleShape2D_v0pkk")
 position = Vector2(86.75, 26.75)
 shape = SubResource("RectangleShape2D_4x57a")
 
-[node name="Sprite2D" type="Sprite2D" parent="Topo"]
+[node name="Sprite2DTopo" type="Sprite2D" parent="Topo"]
 position = Vector2(85, 40)
 scale = Vector2(147.5, 73.5)
 texture = SubResource("CanvasTexture_k4cym")
+
+[node name="Player" type="CharacterBody2D" parent="Topo"]
+position = Vector2(0, 407)
+collision_mask = 0
+script = ExtResource("1_ysyk0")
+
+[node name="Area2DPlayer" type="Area2D" parent="Topo/Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Topo/Player/Area2DPlayer"]
+position = Vector2(-130.75, 70.2499)
+rotation = 0.785397
+shape = SubResource("RectangleShape2D_wyysw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Topo/Player"]
+position = Vector2(-56, 62.875)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_4x57a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Topo/Player"]
+position = Vector2(-126.5, 65.9999)
+rotation = -0.785397
+shape = SubResource("RectangleShape2D_ysyk0")
 
 [connection signal="area_entered" from="Topo/Area2D" to="Topo" method="_on_area_2d_area_entered"]
