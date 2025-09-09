@@ -1,47 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://c3nmf1ybt6w2y"]
+[gd_scene load_steps=10 format=3 uid="uid://c3nmf1ybt6w2y"]
 
-[ext_resource type="Texture2D" uid="uid://dav7hwobjks27" path="res://assets/start/gameName.png" id="1_1n0d2"]
 [ext_resource type="Script" uid="uid://cdwb52cw3u2g6" path="res://touch_screen_button.gd" id="2_1n0d2"]
 [ext_resource type="Texture2D" uid="uid://cad4yr6nx5rbj" path="res://assets/start/button_play.png" id="2_qn1rc"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_qn1rc"]
 specular_color = Color(0.66851, 0.628042, 0.934779, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g38d0"]
-atlas = ExtResource("1_1n0d2")
-region = Rect2(0, 0, 130, 111)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pob1m"]
-atlas = ExtResource("1_1n0d2")
-region = Rect2(130, 0, 130, 111)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gophc"]
-atlas = ExtResource("1_1n0d2")
-region = Rect2(260, 0, 130, 111)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p0nl4"]
-atlas = ExtResource("1_1n0d2")
-region = Rect2(390, 0, 130, 111)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_da165"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g38d0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pob1m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gophc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p0nl4")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ots34"]
 specular_color = Color(0.467965, 0.435137, 0.325702, 1)
@@ -115,17 +78,10 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 300
 alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/VBoxContainer/PanelContainer"]
-position = Vector2(7.62939e-06, -194)
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_da165")
-autoplay = "default"
-frame = 3
-frame_progress = 0.993703
+size_flags_horizontal = 4
+text = "HOLA"
 
 [node name="Control_button_play" type="Control" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2

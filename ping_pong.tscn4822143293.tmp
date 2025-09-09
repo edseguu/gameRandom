@@ -26,7 +26,7 @@ radius = 24.0832
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1b3ln"]
 radius = 57.5
-height = 273.142
+height = 281.419
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_4mbhn"]
 
@@ -119,7 +119,7 @@ texture = SubResource("CanvasTexture_4mbhn")
 script = ExtResource("5_k4svs")
 
 [node name="Enemy" type="CharacterBody2D" parent="."]
-position = Vector2(363, 216)
+position = Vector2(362, -72)
 scale = Vector2(0.943761, 0.720197)
 collision_mask = 13
 script = ExtResource("6_ubp5t")

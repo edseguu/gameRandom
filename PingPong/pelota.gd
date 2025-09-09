@@ -6,10 +6,7 @@ var textura_normal = preload("res://assets/ping_pong/wall.png")
 var textura_estado = preload("res://assets/ping_pong/wallState.png")
 
 func _ready() -> void:
-	# Le damos un impulso inicial aleatorio para que empiece a moverse.
-	#var direccion_inicial = Vector2.RIGHT.rotated(randf_range(0, TAU))
-	#apply_central_impulse(direccion_inicial * 500)
-	pass
+	position
 	
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:

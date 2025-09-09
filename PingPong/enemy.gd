@@ -16,4 +16,3 @@ func _process(delta: float) -> void:
 func _on_pelota_body_entered(body: Node) -> void:
 	if body.name == "Enemy":
 		contador_enemy += 1
-		print(contador_enemy)
