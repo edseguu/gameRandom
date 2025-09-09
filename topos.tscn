@@ -63,3 +63,5 @@ rotation = -0.785397
 shape = SubResource("RectangleShape2D_ysyk0")
 
 [connection signal="area_entered" from="Topo/Area2D" to="Topo" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Topo/Player/Area2DPlayer" to="Topo/Player" method="_on_area_2d_player_area_entered"]
+[connection signal="area_exited" from="Topo/Player/Area2DPlayer" to="Topo/Player" method="_on_area_2d_player_area_exited"]
