@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://dnybn1xnwxqri" path="res://assets/fonts/SixtyfourConvergence-Regular-VariableFont_BLED,SCAN,XELA,YELA.ttf" id="1_ccer4"]
 [ext_resource type="Texture2D" uid="uid://bghm821w4ty5k" path="res://assets/game_over/button.png" id="1_y26ei"]
-[ext_resource type="Script" uid="uid://c4oyfu2d2287g" path="res://button.gd" id="2_yxx3c"]
+[ext_resource type="Script" uid="uid://c4oyfu2d2287g" path="res://GameOver/button.gd" id="2_yxx3c"]
 
 [node name="GameOver" type="Node"]
 metadata/_edit_vertical_guides_ = [359.0]

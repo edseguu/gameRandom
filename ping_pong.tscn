@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://dae5pb6r51712" path="res://PingPong/area_enemy.gd" id="8_1b3ln"]
 [ext_resource type="Texture2D" uid="uid://smjwmrcbep7f" path="res://assets/ping_pong/wall.png" id="8_70da3"]
 [ext_resource type="Texture2D" uid="uid://bw23p35oq0g0k" path="res://assets/ping_pong/enemy.png" id="9_qjqrq"]
-[ext_resource type="Script" uid="uid://didjvcvbfc22v" path="res://area_player.gd" id="11_exua4"]
+[ext_resource type="Script" uid="uid://didjvcvbfc22v" path="res://PingPong/area_player.gd" id="11_exua4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k4svs"]
 friction = 0.0

@@ -1,66 +1,63 @@
 [gd_scene load_steps=9 format=3 uid="uid://lny5gr7nv85n"]
 
-[ext_resource type="Script" uid="uid://dw2hfkrtjc0tt" path="res://player_topo.gd" id="1_ysyk0"]
-[ext_resource type="Script" uid="uid://bw7ep2kcwn13g" path="res://controll_topo_player.gd" id="2_ysyk0"]
-[ext_resource type="Script" uid="uid://ikfirvqutiae" path="res://area_2d.gd" id="4_4x57a"]
+[ext_resource type="Script" uid="uid://d0ydbhuabl48i" path="res://Topos/player.gd" id="1_ysyk0"]
+[ext_resource type="Script" uid="uid://td6gxsiimhqw" path="res://Topos/topo.gd" id="2_v0pkk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyysw"]
+size = Vector2(323, 166)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_v4e20"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysyk0"]
+size = Vector2(268, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0pkk"]
+size = Vector2(176, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4x57a"]
-size = Vector2(246.931, 80.625)
+size = Vector2(131.5, 62.5)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_k4cym"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_atvka"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysyk0"]
-size = Vector2(223, 178)
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_v0pkk"]
-
 [node name="Node2D" type="Node2D"]
 
-[node name="player_topo" type="CharacterBody2D" parent="."]
-position = Vector2(350, 1006)
-scale = Vector2(0.724898, 0.4)
-collision_mask = 0
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(372, 763)
 script = ExtResource("1_ysyk0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player_topo"]
-position = Vector2(-0.689758, -4.6875)
-shape = SubResource("RectangleShape2D_4x57a")
+[node name="Area2D" type="Area2D" parent="Player"]
 
-[node name="Sprite2D" type="Sprite2D" parent="player_topo"]
-position = Vector2(-3.05176e-05, 3.05176e-05)
-scale = Vector2(245.552, 80.0004)
-texture = SubResource("CanvasTexture_k4cym")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2(-44.5, 72)
+shape = SubResource("RectangleShape2D_wyysw")
 
-[node name="Controll_player" type="CanvasLayer" parent="player_topo"]
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(-48, 71.75)
+scale = Vector2(300, 144.5)
+texture = SubResource("CanvasTexture_v4e20")
 
-[node name="controll_topo_player" type="TextureRect" parent="player_topo/Controll_player"]
-modulate = Color(0.258771, 0.457539, 0.574505, 1)
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 211.0
-offset_top = -258.0
-offset_right = -198.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = SubResource("CanvasTexture_atvka")
-script = ExtResource("2_ysyk0")
-
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(261, 500)
-script = ExtResource("4_4x57a")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(101.5, 79)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-46, 73)
 shape = SubResource("RectangleShape2D_ysyk0")
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-position = Vector2(105.25, 75.25)
-scale = Vector2(211.5, 151.5)
-texture = SubResource("CanvasTexture_v0pkk")
+[node name="Topo" type="RigidBody2D" parent="."]
+position = Vector2(372, 356)
+freeze = true
+script = ExtResource("2_v0pkk")
 
-[connection signal="ready" from="player_topo" to="player_topo" method="_on_ready"]
-[connection signal="body_entered" from="Area2D" to="player_topo" method="_on_area_2d_body_entered"]
+[node name="Area2D" type="Area2D" parent="Topo"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Topo/Area2D"]
+position = Vector2(78, 40)
+shape = SubResource("RectangleShape2D_v0pkk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Topo"]
+position = Vector2(86.75, 26.75)
+shape = SubResource("RectangleShape2D_4x57a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Topo"]
+position = Vector2(85, 40)
+scale = Vector2(147.5, 73.5)
+texture = SubResource("CanvasTexture_k4cym")
+
+[connection signal="area_entered" from="Topo/Area2D" to="Topo" method="_on_area_2d_area_entered"]
