@@ -1,13 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://lny5gr7nv85n"]
+[gd_scene load_steps=11 format=3 uid="uid://lny5gr7nv85n"]
 
 [ext_resource type="Script" uid="uid://d0ydbhuabl48i" path="res://Topos/player.gd" id="1_ysyk0"]
 [ext_resource type="Texture2D" uid="uid://cyhxoyqib2538" path="res://assets/Topos/player.png" id="2_4x57a"]
 [ext_resource type="Script" uid="uid://td6gxsiimhqw" path="res://Topos/topo.gd" id="2_v0pkk"]
 [ext_resource type="Texture2D" uid="uid://d1cxnj1rivkrp" path="res://assets/Topos/wallV.png" id="4_4x57a"]
-[ext_resource type="Script" uid="uid://cb6qy1d4rugqk" path="res://player_controll.gd" id="5_k4cym"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0pkk"]
-size = Vector2(21, 17)
+size = Vector2(176, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4x57a"]
 size = Vector2(131.5, 62.5)
@@ -15,7 +14,7 @@ size = Vector2(131.5, 62.5)
 [sub_resource type="CanvasTexture" id="CanvasTexture_k4cym"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wyysw"]
-size = Vector2(86.9741, 35.3554)
+size = Vector2(113.844, 46.669)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysyk0"]
 size = Vector2(41.7192, 115.258)
@@ -33,11 +32,11 @@ script = ExtResource("2_v0pkk")
 [node name="Area2D" type="Area2D" parent="Topo"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Topo/Area2D"]
-position = Vector2(71.5, 42.5)
+position = Vector2(78, 40)
 shape = SubResource("RectangleShape2D_v0pkk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Topo"]
-position = Vector2(80, 29)
+position = Vector2(86.75, 26.75)
 shape = SubResource("RectangleShape2D_4x57a")
 
 [node name="Sprite2DTopo" type="Sprite2D" parent="Topo"]
@@ -53,7 +52,7 @@ script = ExtResource("1_ysyk0")
 [node name="Area2DPlayer" type="Area2D" parent="Player"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2DPlayer"]
-position = Vector2(-124.75, 68.2499)
+position = Vector2(-130.75, 70.2499)
 rotation = 0.785397
 shape = SubResource("RectangleShape2D_wyysw")
 
@@ -66,22 +65,6 @@ texture = ExtResource("2_4x57a")
 position = Vector2(-126.5, 65.9999)
 rotation = -0.785397
 shape = SubResource("RectangleShape2D_ysyk0")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Player"]
-
-[node name="TextureRect" type="TextureRect" parent="Player/CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -337.5
-offset_top = -750.0
-offset_right = 337.5
-offset_bottom = 750.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("5_k4cym")
 
 [node name="ParedV2" type="StaticBody2D" parent="."]
 position = Vector2(680, 0)
@@ -107,8 +90,6 @@ shape = SubResource("RectangleShape2D_k4cym")
 position = Vector2(19.25, 740.75)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_4x57a")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
 
 [connection signal="area_entered" from="Topo/Area2D" to="Topo" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Player/Area2DPlayer" to="Player" method="_on_area_2d_player_area_entered"]

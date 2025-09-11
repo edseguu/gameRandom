@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://cetjlqbv361cw"]
+
+[ext_resource type="FontFile" uid="uid://dnybn1xnwxqri" path="res://assets/fonts/SixtyfourConvergence-Regular-VariableFont_BLED,SCAN,XELA,YELA.ttf" id="1_ccer4"]
+[ext_resource type="Texture2D" uid="uid://bghm821w4ty5k" path="res://assets/game_over/button.png" id="1_y26ei"]
+[ext_resource type="Script" uid="uid://c4oyfu2d2287g" path="res://GameOver/button.gd" id="2_yxx3c"]
+
+[node name="GameOver" type="Node"]
+metadata/_edit_vertical_guides_ = [359.0]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Control" type="Control" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer/PanelContainer/VBoxContainer/Control"]
+position = Vector2(-174, 118)
+scale = Vector2(0.969445, 0.847193)
+texture_normal = ExtResource("1_y26ei")
+script = ExtResource("2_yxx3c")
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.974992, 0, 0.0605457, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_ccer4")
+theme_override_font_sizes/font_size = 70
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/Control/TouchScreenButton" to="CanvasLayer/PanelContainer/VBoxContainer/Control/TouchScreenButton" method="_on_pressed"]
