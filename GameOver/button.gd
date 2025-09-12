@@ -6,7 +6,6 @@ var escenas_random = [
 ]
 
 func _on_pressed() -> void:
-	print("POPO")
 	var random_scene = escenas_random.pick_random()
 	print(random_scene)
 	get_tree().change_scene_to_file(random_scene)
