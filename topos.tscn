@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c84wq0m8jmqv" path="res://assets/Topos/back.png" id="2_kdxoj"]
 [ext_resource type="Script" uid="uid://td6gxsiimhqw" path="res://Topos/topo.gd" id="2_v0pkk"]
 [ext_resource type="Texture2D" uid="uid://d1cxnj1rivkrp" path="res://assets/Topos/wallV.png" id="4_4x57a"]
+[ext_resource type="Texture2D" uid="uid://448b3gutjp2v" path="res://assets/Topos/topo.png" id="4_ggo36"]
 [ext_resource type="Script" uid="uid://cb6qy1d4rugqk" path="res://Topos/player_controll.gd" id="5_k4cym"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jqiye"]
@@ -32,18 +33,16 @@ sources/1 = SubResource("TileSetAtlasSource_ggo36")
 size = Vector2(21, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4x57a"]
-size = Vector2(131.5, 62.5)
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_k4cym"]
+size = Vector2(100, 77)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4cym"]
 size = Vector2(71.9999, 1503)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wyysw"]
-size = Vector2(94.7523, 9.19242)
+size = Vector2(35.3553, 15.7331)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysyk0"]
-size = Vector2(41.7192, 115.258)
+size = Vector2(33.5876, 82.2012)
 
 [node name="Node2D" type="Node2D"]
 
@@ -52,22 +51,45 @@ tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAA
 tile_set = SubResource("TileSet_ggo36")
 script = ExtResource("2_jqiye")
 
+[node name="Topo2" type="RigidBody2D" parent="."]
+position = Vector2(584, 168)
+freeze = true
+script = ExtResource("2_v0pkk")
+
+[node name="Area2D" type="Area2D" parent="Topo2"]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Topo2/Area2D"]
+position = Vector2(13, -27)
+shape = SubResource("RectangleShape2D_v0pkk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Topo2"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_4x57a")
+
+[node name="Sprite2DTopo" type="Sprite2D" parent="Topo2"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_ggo36")
+
 [node name="Topo" type="RigidBody2D" parent="."]
-position = Vector2(53, 277)
+position = Vector2(354, 320)
 freeze = true
 script = ExtResource("2_v0pkk")
 
 [node name="Area2D" type="Area2D" parent="Topo"]
+collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Topo/Area2D"]
+position = Vector2(13, -27)
 shape = SubResource("RectangleShape2D_v0pkk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Topo"]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_4x57a")
 
 [node name="Sprite2DTopo" type="Sprite2D" parent="Topo"]
-scale = Vector2(147.5, 73.5)
-texture = SubResource("CanvasTexture_k4cym")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_ggo36")
 
 [node name="ParedH2" type="StaticBody2D" parent="."]
 position = Vector2(-403, 94)
@@ -129,24 +151,25 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_4x57a")
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(372, 763)
-collision_mask = 4
+position = Vector2(432, 1129)
+collision_mask = 36
 script = ExtResource("1_ysyk0")
 
 [node name="Area2DPlayer" type="Area2D" parent="Player"]
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2DPlayer"]
-position = Vector2(-143.25, 81.25)
+position = Vector2(-107.063, 69.0625)
 rotation = 0.785397
 shape = SubResource("RectangleShape2D_wyysw")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 position = Vector2(-56, 62.875)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_4x57a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-126.5, 65.9999)
+position = Vector2(-97.9374, 63.8125)
 rotation = -0.785397
 shape = SubResource("RectangleShape2D_ysyk0")
 
@@ -158,14 +181,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -316.0
-offset_top = -642.0
-offset_right = 365.0
-offset_bottom = 629.0
+offset_left = -312.0
+offset_top = -661.0
+offset_right = 369.0
+offset_bottom = 657.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_k4cym")
 
+[connection signal="body_entered" from="Topo2" to="Player" method="_on_topo_2_body_entered"]
+[connection signal="area_entered" from="Topo2/Area2D" to="Topo2" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Topo/Area2D" to="Topo" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Player/Area2DPlayer" to="Player" method="_on_area_2d_player_area_entered"]
 [connection signal="area_exited" from="Player/Area2DPlayer" to="Player" method="_on_area_2d_player_area_exited"]
