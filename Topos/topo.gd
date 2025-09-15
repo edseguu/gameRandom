@@ -16,10 +16,4 @@ func _ready() -> void:
 	
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	var timer = Timer.new()
-	timer.autostart = true
-	timer.wait_time = 0.8
-	add_child(timer)
-	timer.timeout.connect(func():
-		get_tree().change_scene_to_file("res://game_over.tscn")
-		)
+	pass
