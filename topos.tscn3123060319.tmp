@@ -1,16 +1,14 @@
-[gd_scene load_steps=21 format=4 uid="uid://lny5gr7nv85n"]
+[gd_scene load_steps=18 format=4 uid="uid://lny5gr7nv85n"]
 
 [ext_resource type="Script" uid="uid://d0ydbhuabl48i" path="res://Topos/player.gd" id="1_ysyk0"]
-[ext_resource type="Texture2D" uid="uid://db5tptdcjec5s" path="res://assets/Topos/player.png" id="2_4x57a"]
-[ext_resource type="Texture2D" uid="uid://ye2idy3my06k" path="res://assets/Topos/wallH.png" id="2_atvka"]
+[ext_resource type="Texture2D" uid="uid://cyhxoyqib2538" path="res://assets/Topos/player.png" id="2_4x57a"]
+[ext_resource type="Texture2D" uid="uid://nvp0b6gnrxmm" path="res://assets/Topos/wallH.png" id="2_atvka"]
 [ext_resource type="Script" uid="uid://bmejg7nrkid2q" path="res://Topos/tile_map_layer.gd" id="2_jqiye"]
-[ext_resource type="Texture2D" uid="uid://b6mvvhe51y8gg" path="res://assets/Topos/back.png" id="2_kdxoj"]
+[ext_resource type="Texture2D" uid="uid://c84wq0m8jmqv" path="res://assets/Topos/back.png" id="2_kdxoj"]
 [ext_resource type="Script" uid="uid://td6gxsiimhqw" path="res://Topos/topo.gd" id="2_v0pkk"]
-[ext_resource type="Texture2D" uid="uid://cq4wjs8yc2hed" path="res://assets/Topos/wallV.png" id="4_4x57a"]
-[ext_resource type="Texture2D" uid="uid://fjnom32vvcb8" path="res://assets/Topos/topo.png" id="4_ggo36"]
+[ext_resource type="Texture2D" uid="uid://d1cxnj1rivkrp" path="res://assets/Topos/wallV.png" id="4_4x57a"]
+[ext_resource type="Texture2D" uid="uid://448b3gutjp2v" path="res://assets/Topos/topo.png" id="4_ggo36"]
 [ext_resource type="Script" uid="uid://cb6qy1d4rugqk" path="res://Topos/player_controll.gd" id="5_k4cym"]
-[ext_resource type="FontFile" uid="uid://m60kvb2u6f64" path="res://assets/fonts/Inconsolata-VariableFont_wdth,wght.ttf" id="10_2ecnj"]
-[ext_resource type="Script" uid="uid://wki23c2pm1u5" path="res://Topos/label.gd" id="10_77j2p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jqiye"]
 resource_name = "terrain"
@@ -44,15 +42,6 @@ size = Vector2(74.0001, 54)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysyk0"]
 size = Vector2(45.839, 95.5593)
-
-[sub_resource type="LabelSettings" id="LabelSettings_77j2p"]
-line_spacing = 5.0
-paragraph_spacing = 9.0
-font = ExtResource("10_2ecnj")
-font_size = 70
-font_color = Color(0.121079, 0.121198, 0.0900231, 1)
-outline_size = 30
-outline_color = Color(0.290706, 0.788071, 0.83878, 0.709804)
 
 [node name="Node2D" type="Node2D"]
 
@@ -220,14 +209,6 @@ offset_bottom = 657.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_k4cym")
-
-[node name="Label" type="Label" parent="."]
-offset_left = 56.0
-offset_top = 110.0
-offset_right = 370.0
-offset_bottom = 185.0
-label_settings = SubResource("LabelSettings_77j2p")
-script = ExtResource("10_77j2p")
 
 [connection signal="area_entered" from="Topo3/Area2D" to="Topo3" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Topo2/Area2D" to="Topo2" method="_on_area_2d_area_entered"]

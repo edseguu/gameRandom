@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c3nmf1ybt6w2y"]
 
 [ext_resource type="Script" uid="uid://cdwb52cw3u2g6" path="res://Start/touch_screen_button.gd" id="2_1n0d2"]
-[ext_resource type="Texture2D" uid="uid://cad4yr6nx5rbj" path="res://assets/start/button_play.png" id="2_qn1rc"]
+[ext_resource type="Texture2D" uid="uid://beyec0vencbwr" path="res://assets/start/button_play.png" id="2_qn1rc"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_qn1rc"]
 specular_color = Color(0.66851, 0.628042, 0.934779, 1)
