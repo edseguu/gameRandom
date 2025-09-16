@@ -9,7 +9,7 @@ extends RigidBody2D
 
 @onready var life = 100
 
-@onready var tempo = get_tree().create_timer(2)
+@onready var sound_eat = $AudioStreamPlayer2D
 
 func _ready() -> void:
 	timer.autostart = true
@@ -36,3 +36,4 @@ func _ready() -> void:
 @warning_ignore("unused_parameter")
 func _on_area_2d_player_area_entered(area: Area2D) -> void:
 	life += 2
+	sound_eat.play()

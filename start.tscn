@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3nmf1ybt6w2y"]
+[gd_scene load_steps=11 format=3 uid="uid://c3nmf1ybt6w2y"]
 
 [ext_resource type="Script" uid="uid://cdwb52cw3u2g6" path="res://Start/touch_screen_button.gd" id="2_1n0d2"]
 [ext_resource type="Texture2D" uid="uid://beyec0vencbwr" path="res://assets/start/button_play.png" id="2_qn1rc"]
+[ext_resource type="AudioStream" uid="uid://0amkdgg17cro" path="res://assets/start/the-return-of-the-8-bit-era-301292.mp3" id="3_1n0d2"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_qn1rc"]
 specular_color = Color(0.66851, 0.628042, 0.934779, 1)
@@ -100,5 +101,10 @@ sprite_frames = SubResource("SpriteFrames_4a3qj")
 autoplay = "default"
 frame = 2
 frame_progress = 0.360567
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1n0d2")
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Control_button_play/ButtonPlay" to="PanelContainer/VBoxContainer/Control_button_play/ButtonPlay" method="_on_pressed"]

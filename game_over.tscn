@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cetjlqbv361cw"]
+[gd_scene load_steps=6 format=3 uid="uid://cetjlqbv361cw"]
 
 [ext_resource type="FontFile" uid="uid://dnybn1xnwxqri" path="res://assets/fonts/SixtyfourConvergence-Regular-VariableFont_BLED,SCAN,XELA,YELA.ttf" id="1_ccer4"]
 [ext_resource type="Texture2D" uid="uid://djm3c6eglsijw" path="res://assets/game_over/button.png" id="1_y26ei"]
 [ext_resource type="Script" uid="uid://c4oyfu2d2287g" path="res://GameOver/button.gd" id="2_yxx3c"]
+[ext_resource type="AudioStream" uid="uid://d2hr44rt0oucg" path="res://assets/game_over/videogame-death-sound-43894.mp3" id="4_8u835"]
+[ext_resource type="AudioStream" uid="uid://cgowovu4ue4v" path="res://assets/game_over/game-over-deep-male-voice-clip-352695.mp3" id="5_ftari"]
 
 [node name="GameOver" type="Node"]
 metadata/_edit_vertical_guides_ = [359.0]
@@ -42,5 +44,13 @@ theme_override_font_sizes/font_size = 70
 text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8u835")
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ftari")
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/Control/TouchScreenButton" to="CanvasLayer/PanelContainer/VBoxContainer/Control/TouchScreenButton" method="_on_pressed"]

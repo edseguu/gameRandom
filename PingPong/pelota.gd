@@ -5,6 +5,8 @@ const FUERZA_IMPULSO_JUGADOR = 2200.0
 var textura_normal = preload("res://assets/ping_pong/wall.png")
 var textura_estado = preload("res://assets/ping_pong/wallState.png")
 
+@onready var sound = $AudioStreamPlayer2D
+
 func _ready() -> void:
 	position
 	
@@ -31,6 +33,7 @@ func _on_body_entered(body: Node) -> void:
 		# la velocidad que tenía la pelota, asegurando un impulso consistente.
 		self.linear_velocity = direccion_rebote.normalized() * FUERZA_IMPULSO_JUGADOR
 		print("¡Impulso aplicado por el jugador!")
+		sound.play()
 	if body.name == "Enemy":
 		var direccion_rebote = (self.global_position - body.global_position).normalized()
 		
@@ -47,6 +50,7 @@ func _on_body_entered(body: Node) -> void:
 		# la velocidad que tenía la pelota, asegurando un impulso consistente.
 		self.linear_velocity = direccion_rebote.normalized() * FUERZA_IMPULSO_JUGADOR
 		print("¡Impulso aplicado por el enemigo!")
+		sound.play()
 
 
 
