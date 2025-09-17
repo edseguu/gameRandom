@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvme1o4lnqmhs"]
+[gd_scene load_steps=12 format=3 uid="uid://dvme1o4lnqmhs"]
+
+[ext_resource type="Script" uid="uid://s5sllvpt8sp5" path="res://catch.gd" id="1_8wmow"]
+[ext_resource type="Script" uid="uid://ctc6fcvben7vr" path="res://path_follow_2d.gd" id="1_xw70x"]
+[ext_resource type="Script" uid="uid://3ww84gp1u7y8" path="res://area_2d.gd" id="2_exx5n"]
+[ext_resource type="Script" uid="uid://btr0n1c4h0n44" path="res://spawn.gd" id="2_mbbi5"]
 
 [sub_resource type="Curve2D" id="Curve2D_58bq4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 680, 0, 0, 0, 0, 0, 40, 0)
 }
 point_count = 2
 
@@ -10,23 +15,81 @@ point_count = 2
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_58bq4"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exx5n"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_mbbi5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbbi5"]
+size = Vector2(681, 20)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_8wmow"]
+
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_8wmow")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_58bq4")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(720, 0)
+position = Vector2(40, 0)
 rotation = 3.14159
+progress = 720.0
+script = ExtResource("1_xw70x")
 
-[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D"]
-position = Vector2(720, -6.29444e-05)
+[node name="Spawn" type="Area2D" parent="Path2D/PathFollow2D"]
 rotation = 3.14159
+script = ExtResource("2_mbbi5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Spawn"]
 shape = SubResource("RectangleShape2D_58bq4")
 
-[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/Area2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/Spawn"]
 position = Vector2(14.25, 12.25)
 scale = Vector2(29.5, 25.5)
 texture = SubResource("CanvasTexture_58bq4")
+
+[node name="Bottle" type="RigidBody2D" parent="."]
+position = Vector2(1256, 584)
+
+[node name="Area2D" type="Area2D" parent="Bottle"]
+position = Vector2(-942, -438)
+gravity_point_unit_distance = 2.74
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottle/Area2D"]
+shape = SubResource("RectangleShape2D_exx5n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bottle/Area2D"]
+position = Vector2(27.75, 22.25)
+scale = Vector2(56.5, 45.5)
+texture = SubResource("CanvasTexture_mbbi5")
+
+[node name="Trash1" type="Area2D" parent="."]
+position = Vector2(157, 73)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trash1"]
+shape = SubResource("RectangleShape2D_exx5n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Trash1"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(370, 1429)
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D" groups=["jugador"]]
+script = ExtResource("2_exx5n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_mbbi5")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/Area2D"]
+modulate = Color(0.649357, 0.434821, 0.760695, 1)
+position = Vector2(7.62939e-06, -1.99997)
+scale = Vector2(678, 25.9999)
+texture = SubResource("CanvasTexture_8wmow")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="area_entered" from="Bottle/Area2D" to="CharacterBody2D/Area2D" method="_on_trash_2_area_entered"]
+[connection signal="area_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D/Area2D" method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
