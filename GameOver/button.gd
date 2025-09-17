@@ -2,7 +2,8 @@ extends TouchScreenButton
 
 var escenas_random = [
 	"res://ping_pong.tscn",
-	"res://topos.tscn"
+	"res://topos.tscn",
+	"res://catch.tscn"
 ]
 
 func _on_pressed() -> void:

@@ -1,7 +1,8 @@
 extends Node2D
 
 var enemy_random = [
-	preload("res://shoe.tscn")
+	preload("res://shoe.tscn"),
+	preload("res://cell.tscn")
 ]
 
 @onready var path_follow = $Path2D/PathFollow2D
