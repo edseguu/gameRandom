@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://xsg3sspnysgf"]
+
+[ext_resource type="Texture2D" uid="uid://bhgjlfqvdee0s" path="res://assets/catch/cake.png" id="1_o3vi6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwpgy"]
+size = Vector2(50, 47)
+
+[node name="cake" type="RigidBody2D" groups=["food"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xwpgy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_o3vi6")
