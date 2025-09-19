@@ -1,11 +1,167 @@
-[gd_scene load_steps=12 format=3 uid="uid://dvme1o4lnqmhs"]
+[gd_scene load_steps=18 format=4 uid="uid://dvme1o4lnqmhs"]
 
 [ext_resource type="Script" uid="uid://s5sllvpt8sp5" path="res://catch/catch.gd" id="1_8wmow"]
 [ext_resource type="Script" uid="uid://ctc6fcvben7vr" path="res://catch/path_follow_2d.gd" id="1_xw70x"]
 [ext_resource type="Script" uid="uid://3ww84gp1u7y8" path="res://catch/area_2d.gd" id="2_exx5n"]
+[ext_resource type="Texture2D" uid="uid://b3qit8ocefg8f" path="res://assets/catch/wall.png" id="2_vg6ro"]
 [ext_resource type="Texture2D" uid="uid://chohjn1e68ycp" path="res://assets/catch/player_state.png" id="4_jhxs3"]
+[ext_resource type="AudioStream" uid="uid://diwt5socjbcgi" path="res://assets/catch/pop-402322.mp3" id="4_uls6w"]
 [ext_resource type="Script" uid="uid://drdsu6hbprdvx" path="res://catch/panel.gd" id="5_jhxs3"]
 [ext_resource type="Script" uid="uid://bnbnjpr8gm7wx" path="res://catch/deleted.gd" id="6_cc40p"]
+[ext_resource type="AudioStream" uid="uid://0ccltg3jm5iv" path="res://assets/catch/yummy-82939.mp3" id="7_j74c1"]
+[ext_resource type="AudioStream" uid="uid://fdky2ry1uc3g" path="res://assets/catch/game-over-groove-306764.mp3" id="9_332to"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uls6w"]
+texture = ExtResource("2_vg6ro")
+texture_region_size = Vector2i(200, 200)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_332to"]
+tile_size = Vector2i(200, 200)
+sources/0 = SubResource("TileSetAtlasSource_uls6w")
 
 [sub_resource type="Curve2D" id="Curve2D_58bq4"]
 _data = {
@@ -25,6 +181,10 @@ size = Vector2(722, 121)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_8wmow")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAADAAUAAAAAAAAAAAACAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAACAAcAAAAAAAAAAAABAAcAAAAAAAAAAAAAAAcAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_332to")
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(0, -42)
@@ -47,8 +207,12 @@ position = Vector2(14.25, 12.25)
 scale = Vector2(29.5, 25.5)
 texture = SubResource("CanvasTexture_58bq4")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Path2D/PathFollow2D/Spawn"]
+stream = ExtResource("4_uls6w")
+volume_db = 12.134
+
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(361, 1323)
+position = Vector2(361, 1261)
 
 [node name="Area2D" type="Area2D" parent="CharacterBody2D" groups=["jugador"]]
 script = ExtResource("2_exx5n")
@@ -62,12 +226,16 @@ position = Vector2(7.62939e-06, 3.00407e-05)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_jhxs3")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D/Area2D"]
+stream = ExtResource("7_j74c1")
+volume_db = 11.556
+
 [node name="CanvasLayer" type="CanvasLayer" parent="CharacterBody2D"]
 
 [node name="Panel" type="Panel" parent="CharacterBody2D/CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
 offset_left = 40.0
-offset_top = 992.0
+offset_top = 750.0
 offset_right = 680.0
 offset_bottom = 1542.0
 script = ExtResource("5_jhxs3")
@@ -83,6 +251,12 @@ script = ExtResource("6_cc40p")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Deleted"]
 position = Vector2(361, -50.5)
 shape = SubResource("RectangleShape2D_jhxs3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_332to")
+volume_db = -0.559
+autoplay = true
+parameters/looping = true
 
 [connection signal="body_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="CharacterBody2D/Area2D" to="CharacterBody2D/Area2D" method="_on_body_exited"]

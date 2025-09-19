@@ -8,6 +8,7 @@ var enemy_random = [
 
 @onready var path_follow = $Path2D/PathFollow2D
 @onready var spawn_point = $Path2D/PathFollow2D/Spawn
+@onready var audio_drop_item = $Path2D/PathFollow2D/Spawn/AudioStreamPlayer2D
 
 
 func _on_timer_timeout() -> void:
@@ -17,3 +18,5 @@ func _on_timer_timeout() -> void:
 	new_enemy.global_position = spawn_point.global_position
 	
 	add_child(new_enemy)
+	audio_drop_item.play()
+	
